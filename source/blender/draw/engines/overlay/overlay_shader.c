@@ -30,6 +30,7 @@
 
 extern char datatoc_antialiasing_frag_glsl[];
 extern char datatoc_antialiasing_vert_glsl[];
+extern char datatoc_armature_alpha_lib_glsl[];
 extern char datatoc_armature_dof_vert_glsl[];
 extern char datatoc_armature_dof_solid_frag_glsl[];
 extern char datatoc_armature_envelope_distance_frag_glsl[];
@@ -389,6 +390,7 @@ GPUShader *OVERLAY_shader_armature_sphere(bool use_outline)
                                  NULL},
         .frag = (const char *[]){extensions,
                                  datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
                                  datatoc_armature_wire_frag_glsl,
                                  NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
@@ -402,6 +404,7 @@ GPUShader *OVERLAY_shader_armature_sphere(bool use_outline)
                                  NULL},
         .frag = (const char *[]){extensions,
                                  datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
                                  datatoc_armature_sphere_solid_frag_glsl,
                                  NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
@@ -427,8 +430,10 @@ GPUShader *OVERLAY_shader_armature_shape(bool use_outline)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_shape_outline_geom_glsl,
                                  NULL},
-        .frag =
-            (const char *[]){datatoc_common_view_lib_glsl, datatoc_armature_wire_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_wire_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
     });
   }
@@ -438,7 +443,10 @@ GPUShader *OVERLAY_shader_armature_shape(bool use_outline)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_shape_solid_vert_glsl,
                                  NULL},
-        .frag = (const char *[]){datatoc_armature_shape_solid_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_shape_solid_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
     });
   }
@@ -457,8 +465,10 @@ GPUShader *OVERLAY_shader_armature_shape_wire(void)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_shape_wire_vert_glsl,
                                  NULL},
-        .frag =
-            (const char *[]){datatoc_common_view_lib_glsl, datatoc_armature_wire_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_wire_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
     });
   }
@@ -477,8 +487,10 @@ GPUShader *OVERLAY_shader_armature_envelope(bool use_outline)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_envelope_outline_vert_glsl,
                                  NULL},
-        .frag =
-            (const char *[]){datatoc_common_view_lib_glsl, datatoc_armature_wire_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_wire_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
     });
   }
@@ -488,7 +500,10 @@ GPUShader *OVERLAY_shader_armature_envelope(bool use_outline)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_envelope_solid_vert_glsl,
                                  NULL},
-        .frag = (const char *[]){datatoc_armature_envelope_solid_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_envelope_solid_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
     });
   }
@@ -507,7 +522,10 @@ GPUShader *OVERLAY_shader_armature_stick(void)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_stick_vert_glsl,
                                  NULL},
-        .frag = (const char *[]){datatoc_armature_stick_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_stick_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
     });
   }
@@ -526,8 +544,10 @@ GPUShader *OVERLAY_shader_armature_degrees_of_freedom_wire(void)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_dof_vert_glsl,
                                  NULL},
-        .frag =
-            (const char *[]){datatoc_common_view_lib_glsl, datatoc_armature_wire_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_wire_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, "#define EDGE\n", NULL},
     });
   }
@@ -547,6 +567,7 @@ GPUShader *OVERLAY_shader_armature_degrees_of_freedom_solid(void)
                                  datatoc_armature_dof_vert_glsl,
                                  NULL},
         .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
                                  datatoc_armature_dof_solid_frag_glsl,
                                  NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
@@ -567,8 +588,10 @@ GPUShader *OVERLAY_shader_armature_wire(void)
                                  datatoc_common_view_lib_glsl,
                                  datatoc_armature_wire_vert_glsl,
                                  NULL},
-        .frag =
-            (const char *[]){datatoc_common_view_lib_glsl, datatoc_armature_wire_frag_glsl, NULL},
+        .frag = (const char *[]){datatoc_common_view_lib_glsl,
+                                 datatoc_armature_alpha_lib_glsl,
+                                 datatoc_armature_wire_frag_glsl,
+                                 NULL},
         .defs = (const char *[]){sh_cfg->def, NULL},
     });
   }
